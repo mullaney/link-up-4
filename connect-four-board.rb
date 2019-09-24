@@ -7,7 +7,7 @@ COLS = 7
 RED = 'Red'.freeze
 BLACK = 'Black'.freeze
 
-module ConnectFour
+module LinkUpFour
   # The connect four 'board': a grid for placing checkers
   class Board
     attr_accessor :grid
@@ -55,14 +55,6 @@ module ConnectFour
 
     def black_square
       ' ● '.colorize(:black).on_yellow
-    end
-  end
-
-  # Player for connect four
-  class Player
-    attr_reader :color
-    def initialize(color)
-      @color = color
     end
   end
 
@@ -138,13 +130,13 @@ module ConnectFour
   end
 end
 
-game = ConnectFour::Game.new
+game = LinkUpFour::Game.new
 game.start
 
 # Testing Board
-class TestConnectFourBoard < MiniTest::Test
+class TestLinkUpFourBoard < MiniTest::Test
   def setup
-    @board = ConnectFour::Board.new
+    @board = LinkUpFour::Board.new
   end
 
   def test_board_contains_a_grid
@@ -168,9 +160,9 @@ class TestConnectFourBoard < MiniTest::Test
 end
 
 # Testing Player
-class TestConnectFourPlayer < MiniTest::Test
+class TestLinkUpFourPlayer < MiniTest::Test
   def setup
-    @player = ConnectFour::Player.new(RED)
+    @player = LinkUpFour::Player.new(RED)
   end
 
   def test_player_has_a_color
@@ -178,9 +170,9 @@ class TestConnectFourPlayer < MiniTest::Test
   end
 end
 
-class TestConnectFourGame < MiniTest::Test
+class TestLinkUpFourGame < MiniTest::Test
   def setup
-    @game = ConnectFour::Game.new
+    @game = LinkUpFour::Game.new
   end
 
   def test_has_a_current_player_which_starts_as_black
