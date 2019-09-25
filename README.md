@@ -1,16 +1,4 @@
 # Connect Four
 
-## Models
-- Board
--- 6 x 7 grid
--- drop checker method
--- win condition
--- print board
-
-- Player
--- Color
-
-- Game
--- has a board
--- has two players
--- who's turn it is
+## Setup
+This repo uses the [colorize gem](https://github.com/fazibear/colorize). Use `gem install colorize` to install it. Then run the game with: `ruby link_up_four.rb`
