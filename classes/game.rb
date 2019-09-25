@@ -1,5 +1,7 @@
 require 'minitest/autorun'
+require 'io/console'
 require_relative 'board'
+require_relative 'output'
 
 module LinkUpFour
   # Handles gameplay
@@ -18,39 +20,43 @@ module LinkUpFour
       system("clear") || system("cls")
     end
 
+    def output(str)
+      Output.new(str).output_one_line
+    end
+
     def start_message
-      '  Welcome to Link Up 4!  '.black.on_white + "\n" +
-      '  Black goes first.      '.black.on_white
+      blank_white
+      puts output('Welcome to Link Up 4')
+      puts output('Black goes first')
     end
 
     def turn_message
-      "  It is #{@current_player}'s turn.      ".slice(0, 25).black.on_white + "\n" +
-      "  Choose a column, 1-#{COLS}.   ".slice(0, 25).black.on_white + "\n" +
-      "  Press Q to quit.       ".black.on_white
+      puts output("It is #{@current_player}'s turn.")
+      puts output("Choose a column, 1-#{COLS}.")
+      puts output('Press Q to quit.')
+      blank_white
     end
 
     def blank_white
-      '                         '.black.on_white
+      puts output('')
     end
 
     def start
       clear
-      puts blank_white
-      puts start_message
+      start_message
       turn_loop
     end
 
     def turn
-      @board.show
-      puts turn_message
-      puts blank_white
+      puts @board.to_s
+      turn_message
       STDIN.getch
     end
 
     def column_full
-      puts blank_white
-      puts '  That column is full.   '.black.on_white
-      puts '  Try another column.    '.black.on_white
+      blank_white
+      puts output('That column is full.')
+      puts output('Try another column.')
     end
 
     def turn_loop

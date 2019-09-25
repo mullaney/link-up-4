@@ -49,5 +49,3 @@ module LinkUpFour
     end
   end
 end
-
-p ColorizedString.color_samples
